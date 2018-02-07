@@ -2,12 +2,40 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %} Barlito's Bank {% endblock %}</title>
+        {% block stylesheets %}
+            <!--Import Google Icon Font-->
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+            <!--Import materialize.css-->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"/>
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block navbar %}
+            <div style="margin-left:20px; margin-right:20px; margin-top:40px;">
+                <nav>
+                  <div class="nav-wrapper teal lighten-2" style="padding-left:100px">
+                    <a href="#!" class="brand-logo">Ma Banque En Ligne </a>
+                  </div>
+                </nav>
+            </div>
+        {% endblock %}
+
+        {% block body %}
+        {% endblock %}
+
+        {% block javascripts %}
+            <!--Import jQuery before materialize.js-->
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                   $('select').material_select();
+                });
+            </script>
+        {% endblock %}
     </body>
+
+   
 </html>

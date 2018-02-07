@@ -1,0 +1,8 @@
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block body %}
+   	la listes des transactions : </br></br>
+    {% for transaction in transactions %}
+        - {{ transaction.libelle }} à la date du {{ transaction.dateof|date("m/d/Y") }} pour le montant de {{ (transaction.montant/100)|number_format(2, '.', ',') }}€ </br>
+    {% endfor %}
+{% endblock %}  

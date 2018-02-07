@@ -1,0 +1,41 @@
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block body %}
+   	{# Creation de form avec start et end de definit #}
+	{{ form_start(form) }}
+
+	<div class="row">
+	    <div class="input-field col s6">
+	      	{{ form_label(form.login) }}
+			{{ form_widget(form.login) }}
+			{{ form_errors(form.login) }}
+	    </div>
+    </div>
+
+    <div class="row">
+	    <div class="input-field col s6">
+			{{ form_label(form.password) }}
+			{{ form_widget(form.password) }}
+			{{ form_errors(form.password) }}
+		</div>
+	<div>
+
+	<div class="row">
+	    <div class="input-field col s6">
+	      	{{ form_label(form.prenom) }}
+			{{ form_widget(form.prenom) }}
+			{{ form_errors(form.prenom) }}
+	    </div>
+    </div>
+
+    <div class="row">
+	    <div class="input-field col s6">
+			{{ form_label(form.nom) }}
+			{{ form_widget(form.nom) }}
+			{{ form_errors(form.nom) }}
+		</div>
+	<div>
+
+	{{ form_rest(form) }}
+	{{ form_end(form) }}
+{% endblock %} 

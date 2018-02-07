@@ -1,0 +1,75 @@
+{# % extends "AppBundle::layout.html.twig" % #}
+
+{% block fos_user_content % }
+    {% trans_default_domain 'FOSUserBundle' %}
+
+	{% block stylesheets %}
+		<!-- Css Mano pour le login -->
+		<link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/util.css') }}" />
+		<link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/main.css') }}" />
+	{% endblock %}
+
+	{% block body %}
+		{% if error %}
+		    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+
+		<div class="limiter">
+			<div class="container-login100">
+				<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+					<form action="{{ path("fos_user_security_check") }}" method="post" class="login100-form validate-form flex-sb flex-w">
+						{% if csrf_token %}
+	        				<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+	    				{% endif %}
+
+						<span class="txt1 p-b-11">
+							 <label for="username">{{ 'security.login.username'|trans }}</label>
+						</span>
+						<div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
+							<input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="input100"/>
+							<span class="focus-input100"></span>
+						</div>
+						
+						<span class="txt1 p-b-11">
+							<label for="password">{{ 'security.login.password'|trans }}</label>
+						</span>
+						<div class="wrap-input100 validate-input m-b-12" data-validate = "Password is required">
+							<span class="btn-show-pass">
+								<i class="fa fa-eye"></i>
+							</span>
+							<input class="input100" type="password" id="password" name="_password" required="required" />
+							<span class="focus-input100"></span>
+						</div>
+						
+						<div class="flex-sb-m w-full p-b-48">
+							<div class="contact100-form-checkbox">
+								<input class="input-checkbox100" type="checkbox" id="remember_me" name="_remember_me" value="on" />
+	    						<label class="label-checkbox100" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+							</div>
+
+							<div>
+								<a href="#" class="txt3">
+									Forgot Password?
+								</a>
+							</div>
+						</div>
+
+						<div class="container-login100-form-btn">
+							<input class="login100-form-btn" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+		
+
+		<div id="dropDownSelect1"></div>
+	{% endblock %}
+
+	{% block javascripts %}
+	    <!-- Import js for login -->
+	    <script type="text/javascript" href="{{ asset('js/main.js') }}"></script>
+	{% endblock %}
+
+{% endblock fos_user_content %}

@@ -1,0 +1,8 @@
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block body %}
+   	la listes des comptes : </br></br>
+    {% for compte in comptes %}
+        - N°{{ compte.numero }} {{ compte.libelle }} </br>
+    {% endfor %}
+{% endblock %}  

@@ -1,0 +1,61 @@
+apaep:
+  path: /
+  defaults: { _controller: AppBundle:Default:index }
+
+#routes Authetification
+#login:
+#  path: /login
+#  defaults: { _controller: AppBundle:Authentification:login }
+
+#logout:
+#  path: /logout
+#  defaults: { _controller: AppBundle:Authentification:logout }
+
+#sign_up:
+#  path: /sign-up
+#  defaults: { _controller: AppBundle:Authentification:signup }
+
+# routes Clients
+clients:
+  path: /clients
+  defaults: { _controller: AppBundle:Client:getClients }
+
+client_show:
+  path: /clients/{id}
+  defaults: { _controller: AppBundle:Client:showClients }
+  requirements:
+    id: '\d+'
+
+client_add:
+  path: /add_clients
+  defaults: { _controller: AppBundle:Client:addClients }
+
+#routes Comptes
+comptes:
+  path: /comptes
+  defaults: { _controller: AppBundle:Compte:getComptes }
+
+compte_show:
+  path: /comptes/{id}
+  defaults: { _controller: AppBundle:Compte:showComptes }
+  requirements:
+    id: '\d+'
+
+compte_add:
+  path: /add_comptes
+  defaults: { _controller: AppBundle:Compte:addComptes }
+
+#routes Transactions
+transactions:
+  path: /transactions
+  defaults: { _controller: AppBundle:Transaction:getTransactions }
+
+transaction_show:
+  path: /transactions/{id}
+  defaults: { _controller: AppBundle:Transaction:showTransactions }
+  requirements:
+    id: '\d+'
+
+transaction_add:
+  path: /add_transactions
+  defaults: { _controller: AppBundle:Transaction:addTransactions }

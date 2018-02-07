@@ -1,0 +1,8 @@
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block body %}
+   	la listes des clients : </br></br>
+    {% for client in clients %}
+        - {{ client.nom }} {{ client.prenom }} </br>
+    {% endfor %}
+{% endblock %}  
