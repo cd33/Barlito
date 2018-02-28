@@ -1,15 +1,27 @@
-{# % extends "AppBundle::layout.html.twig" % #}
+{% extends "AppBundle::layout.html.twig" %}
 
-{% block fos_user_content % }
-    {% trans_default_domain 'FOSUserBundle' %}
+{% block stylesheets %}
+	{# {{ parent() }} #}
+	<!-- Css Mano pour le login -->
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/navbarcustom.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/util.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/main.css') }}" />
+{% endblock %}
 
-	{% block stylesheets %}
-		<!-- Css Mano pour le login -->
-		<link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/util.css') }}" />
-		<link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/main.css') }}" />
-	{% endblock %}
+{% block navbar %}
+	<div style="margin-left:20px; margin-right:20px; margin-top:40px;">
+        <nav>
+          <div class="navbarcustom" style="padding-left:100px">
+            <a href="#!" class="brand-logo">Ma Banque En Ligne </a>
+          </div>
+        </nav>
+    </div>
+{% endblock %}
 
-	{% block body %}
+{% block body %}
+	{% block fos_user_content %}
+
+		{% trans_default_domain 'FOSUserBundle' %}
 		{% if error %}
 		    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 		{% endif %}
@@ -62,14 +74,11 @@
 				</div>
 			</div>
 		</div>
-		
-
 		<div id="dropDownSelect1"></div>
-	{% endblock %}
+	{% endblock fos_user_content %}
+{% endblock %}
 
-	{% block javascripts %}
-	    <!-- Import js for login -->
-	    <script type="text/javascript" href="{{ asset('js/main.js') }}"></script>
-	{% endblock %}
-
-{% endblock fos_user_content %}
+{% block javascripts %}
+    <!-- Import js for login -->
+    <script type="text/javascript" href="{{ asset('js/main.js') }}"></script>
+{% endblock %}

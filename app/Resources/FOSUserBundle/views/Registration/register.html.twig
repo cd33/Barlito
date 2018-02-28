@@ -1,0 +1,72 @@
+{% extends "AppBundle::layout.html.twig" %}
+
+{% block stylesheets %}
+	{# {{ parent() }} #}
+	<!-- Css Mano pour le login -->
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/navbarcustom.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/util.css') }}" />
+	<link rel="stylesheet" type="text/css" href="{{ asset('bundles/app/css/main.css') }}" />
+{% endblock %}
+
+{% block navbar %}
+	<div style="margin-left:20px; margin-right:20px; margin-top:40px;">
+        <nav>
+          <div class="navbarcustom" style="padding-left:100px">
+            <a href="#!" class="brand-logo">Ma Banque En Ligne </a>
+          </div>
+        </nav>
+    </div>
+{% endblock %}
+
+{% block body %}
+	{% block fos_user_content %}
+		{% trans_default_domain 'FOSUserBundle' %}
+		
+		{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+			<div class="row">
+			    <div class="input-field col s6">
+			      	{{ form_label(form.email) }}
+					{{ form_widget(form.email) }}
+					{{ form_errors(form.email) }}
+			    </div>
+		    </div>
+
+		    <div class="row">
+			    <div class="input-field col s6">
+					{{ form_label(form.username) }}
+					{{ form_widget(form.username) }}
+					{{ form_errors(form.username) }}
+				</div>
+			<div>
+
+			<div class="row">
+			    <div class="input-field col s6">
+			      	{{ form_label(form.plainPassword.first) }}
+					{{ form_widget(form.plainPassword.first) }}
+					{{ form_errors(form.plainPassword.first) }}
+			    </div>
+		    </div>
+
+		    <div class="row">
+			    <div class="input-field col s6">
+					{{ form_label(form.plainPassword.second) }}
+					{{ form_widget(form.plainPassword.second) }}
+					{{ form_errors(form.plainPassword.second) }}
+				</div>
+			<div>
+
+		    <div>
+		        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+		    </div>
+
+		{{ form_rest(form) }}
+		{{ form_end(form) }}
+
+	{% endblock fos_user_content %}
+{% endblock %}
+
+{% block javascripts %}
+    <!-- Import js for login -->
+    <script type="text/javascript" href="{{ asset('js/main.js') }}"></script>
+{% endblock %}

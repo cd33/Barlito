@@ -1,0 +1,44 @@
+.navbarcustom {
+	background-color: #4db6ac !important;
+	box-sizing: inherit;
+	color: #fff;
+	dsiplay: block;
+	font-family: Roboto, sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	height: 65px;
+	line-height: 64px;
+	padding-left: 100px;
+	position: relative;
+	text-size-adjust : 100%;
+}
+
+html {
+	background-color: #ebebeb;
+}
+
+.brand-logo {
+    position: absolute;
+    color: #fff;
+    display: inline-block;
+    font-size: 2.1rem;
+    padding: 0;
+}
+
+/* a {
+    font-family: Raleway-Regular;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #666666;
+    margin: 0px;
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+}
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+} */
