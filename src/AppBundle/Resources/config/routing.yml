@@ -2,19 +2,6 @@ apaep:
   path: /
   defaults: { _controller: AppBundle:Default:index }
 
-#routes Authetification
-#login:
-#  path: /login
-#  defaults: { _controller: AppBundle:Authentification:login }
-
-#logout:
-#  path: /logout
-#  defaults: { _controller: AppBundle:Authentification:logout }
-
-#sign_up:
-#  path: /sign-up
-#  defaults: { _controller: AppBundle:Authentification:signup }
-
 # routes Clients
 clients:
   path: /clients

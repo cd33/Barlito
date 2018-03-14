@@ -29,6 +29,10 @@ a {
     text-decoration: none;
 }
 
+.material-tooltip .backdrop{
+    background-color: #DB0000;
+}
+
 /* a {
     font-family: Raleway-Regular;
     font-size: 14px;

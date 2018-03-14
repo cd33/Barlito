@@ -32,6 +32,7 @@ class Compte
     * @var User
     *
     * @ORM\ManyToOne(targetEntity="Client", inversedBy="compte")
+    * @ORM\JoinColumn(name="client_id",referencedColumnName="client_id")
     */
     protected $client;
 

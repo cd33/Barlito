@@ -132,4 +132,45 @@ class Client
     {
         return $this->user;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->compte = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add compte
+     *
+     * @param \AppBundle\Entity\Compte $compte
+     *
+     * @return Client
+     */
+    public function addCompte(\AppBundle\Entity\Compte $compte)
+    {
+        $this->compte[] = $compte;
+
+        return $this;
+    }
+
+    /**
+     * Remove compte
+     *
+     * @param \AppBundle\Entity\Compte $compte
+     */
+    public function removeCompte(\AppBundle\Entity\Compte $compte)
+    {
+        $this->compte->removeElement($compte);
+    }
+
+    /**
+     * Get compte
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCompte()
+    {
+        return $this->compte;
+    }
 }

@@ -13,9 +13,21 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+       $user = $this->get('security.token_storage')->getToken()->getUser();
+
+        if(in_array('ROLE_SUPER_ADMIN',$user->getRoles()))
+            return $this->redirectToRoute('sonata_admin_dashboard');
+
+        if($user) {
+            $em = $this->getDoctrine()->getManager();
+            // $user->addRole('ROLE_SUPER_ADMIN');
+            // $em->flush();
+            $client = $em->getRepository('AppBundle:Client')->findOneByUser($user);
+            //dump($client);$
+            if($client) {
+                return $this->render('default/index.html.twig', array('client' => $client));
+            }
+        }
+        //dump($user);die;
     }
 }

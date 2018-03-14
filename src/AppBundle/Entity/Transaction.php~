@@ -36,4 +36,93 @@ class Transaction
      */
     protected $dateof;
 
+    /**
+     * @var decimal
+     *
+     * @ORM\Column(name="montant", type="decimal", length=255)
+     */
+    protected $montant;
+
+
+    /**
+     * Get transacId
+     *
+     * @return integer
+     */
+    public function getTransacId()
+    {
+        return $this->transac_id;
+    }
+
+    /**
+     * Set libelle
+     *
+     * @param string $libelle
+     *
+     * @return Transaction
+     */
+    public function setLibelle($libelle)
+    {
+        $this->libelle = $libelle;
+
+        return $this;
+    }
+
+    /**
+     * Get libelle
+     *
+     * @return string
+     */
+    public function getLibelle()
+    {
+        return $this->libelle;
+    }
+
+    /**
+     * Set dateof
+     *
+     * @param \DateTime $dateof
+     *
+     * @return Transaction
+     */
+    public function setDateof($dateof)
+    {
+        $this->dateof = $dateof;
+
+        return $this;
+    }
+
+    /**
+     * Get dateof
+     *
+     * @return \DateTime
+     */
+    public function getDateof()
+    {
+        return $this->dateof;
+    }
+
+    /**
+     * Set montant
+     *
+     * @param decimal $montant
+     *
+     * @return Transaction
+     */
+    public function setMontant($montant)
+    {
+        $this->montant = $montant;
+
+        return $this;
+    }
+
+    /**
+     * Get montant
+     *
+     * @return decimal
+     */
+    public function getMontant()
+    {
+        return $this->montant;
+    }
 }

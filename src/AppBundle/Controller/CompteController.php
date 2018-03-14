@@ -31,7 +31,7 @@ class CompteController extends Controller
 
             if(!empty($compte)){
                 $parameters = array();
-                $parameters['title'] = 'The Client';
+                $parameters['title'] = 'The Compte';
                 $parameters['compte'] = $compte;
                 return $this->render('AppBundle::compte/compte_show.html.twig', $parameters);
             }
