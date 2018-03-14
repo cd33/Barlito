@@ -3,12 +3,12 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\TransactionType;
 use AppBundle\Entity\Transaction;
 
-class TransactionController extends Controller
+class TransactionController extends AbstractController
 {
     public function getTransactionsAction(Request $request)
     {
@@ -18,6 +18,7 @@ class TransactionController extends Controller
         $parameters = array();
         $parameters['title'] = 'Liste des Transactions';
         $parameters['transactions'] = $transactions;
+        $parameters['currentClient'] = $this->getClient();
         return $this->render('AppBundle::transaction/transaction.html.twig', $parameters);
     }
 
@@ -33,6 +34,7 @@ class TransactionController extends Controller
                 $parameters = array();
                 $parameters['title'] = 'The Transaction';
                 $parameters['transaction'] = $transaction;
+                $parameters['currentClient'] = $this->getClient();
                 return $this->render('AppBundle::transaction/transaction_show.html.twig', $parameters);
             }
         }
@@ -50,6 +52,7 @@ class TransactionController extends Controller
 
         if($form->isSubmitted() && $form->isValid()) {
             $transaction = $form->getData();
+            $transaction['currentClient'] = $this->getClient();
 
             $em->persist($transaction);
             $em->flush();

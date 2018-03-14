@@ -3,12 +3,12 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\CompteType;
 use AppBundle\Entity\Compte;
 
-class CompteController extends Controller
+class CompteController extends AbstractController
 {
     public function getComptesAction(Request $request)
     {
@@ -18,6 +18,7 @@ class CompteController extends Controller
         $parameters = array();
         $parameters['title'] = 'Liste des comptes';
         $parameters['comptes'] = $comptes;
+        $parameters['currentClient'] = $this->getClient();
         return $this->render('AppBundle::compte/compte.html.twig', $parameters);
     }
 
@@ -33,6 +34,7 @@ class CompteController extends Controller
                 $parameters = array();
                 $parameters['title'] = 'The Compte';
                 $parameters['compte'] = $compte;
+                $parameters['currentClient'] = $this->getClient();
                 return $this->render('AppBundle::compte/compte_show.html.twig', $parameters);
             }
         }
@@ -50,6 +52,7 @@ class CompteController extends Controller
 
         if($form->isSubmitted() && $form->isValid()) {
             $compte = $form->getData();
+            $compte['currentClient'] = $this->getClient();
 
             $em->persist($compte);
             $em->flush();

@@ -17,9 +17,9 @@
                 <nav>
                   <div class="nav-wrapper teal lighten-2 navbarcustom" style="padding-left:100px">
                     <a href="#!" class="brand-logo">Ma Banque En Ligne </a>
-                    
                     <ul class="right hide-on-med-and-down">
-                        <a href='{{path('fos_user_security_logout')}}'><i class="material-icons left">person</i> Deconnection </a>
+                        <li><a href="#"> Bonjour {{ currentClient.prenom }} {{ currentClient.nom }} !</a></li>
+                        <li><a href='{{path('fos_user_security_logout')}}'><i class="material-icons left">person</i> Deconnexion </a></li>
                     </ul>
                   </div>
                 </nav>

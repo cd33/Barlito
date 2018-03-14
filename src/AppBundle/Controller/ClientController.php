@@ -3,32 +3,26 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\ClientType;
 use AppBundle\Entity\Client;
 
-class ClientController extends Controller
+class ClientController extends AbstractController
 {
-    /**
-     * @Route("/", name="homepage")
-     */
-    public function indexAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
-    }
 
     public function getClientsAction(Request $request)
     {
+        
+
+
         $em = $this->getDoctrine()->getManager();
         $clients = $em->getRepository('AppBundle:Client')->findAll();
 
         $parameters = array();
         $parameters['title'] = 'Liste des clients';
         $parameters['clients'] = $clients;
+        $parameters['currentClient'] = $this->getClient();
         return $this->render('AppBundle::client/client.html.twig', $parameters);
     }
 
@@ -44,6 +38,7 @@ class ClientController extends Controller
                 $parameters = array();
                 $parameters['title'] = 'The Client';
                 $parameters['client'] = $client;
+                $parameters['currentClient'] = $this->getClient();
                 return $this->render('AppBundle::client/client_show.html.twig', $parameters);
             }
         }
@@ -59,6 +54,7 @@ class ClientController extends Controller
 
         if($form->isSubmitted() && $form->isValid()) {
             $client = $form->getData();
+            $client['currentClient'] = $this->getClient();
 
             $em->persist($client);
             $em->flush();
