@@ -25,6 +25,10 @@ html {
     padding: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* a {
     font-family: Raleway-Regular;
     font-size: 14px;
