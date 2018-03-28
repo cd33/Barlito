@@ -45,3 +45,5 @@
 /build/
 
 # Backup entities generated with doctrin
+
+.idea/

@@ -2,18 +2,19 @@
 
 {% block body %}
    	{{ parent() }}
-   	<div style="margin:30px">
+   	<div class="main" style="margin:30px">
 	   	<ul class="collection with-header">
 		   	<!-- <li class="collection-header"> -->
 		   		<div>
-		   			<h5 class="left" style="padding: 10px ">La listes des clients </h5>
+S		   			<h5 class="left" style="padding: 10px ">Listes des clients</h5>
 		   			<h5 class="right" style="padding: 10px;">
 		   				{{ form_start(form) }}
 		   					{{ form_row(form.data) }}
 		   					<div class="hide">{{ form_rest(form) }}</div>
 		   					<input type="submit" />
 		   				{{ form_end(form) }}
-		   				<i class="material-icons left">search</i> rechercher </h5>
+		   				<i class="material-icons left">search</i> rechercher 
+		   			</h5>
 		   		<div>
 		   	<!-- </li>  -->
 		</ul>
@@ -33,8 +34,10 @@
 					      <p><a href="#">{{ client.user.email }}</a></p>
 					    </div>
 					    <div class="card-reveal">
-					      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-					      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+					      <span class="card-title grey-text text-darken-4">{{ client.nom }} {{ client.prenom }}<i class="material-icons right">close</i></span>
+							{#<p>Date de naissance : </p>#}
+							{#<p>Ville : </p>#}
+							<p>{{ client.user.email }}</p>
 					    </div>
 					</div>
 			    </div>
