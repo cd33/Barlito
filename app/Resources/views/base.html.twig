@@ -36,7 +36,7 @@
                         </div>
                         <a href="#!user"><img class="circle" src="https://www.timeshighereducation.com/sites/default/files/byline_photos/default-avatar.png"></a>
                         <a href="#!name"><span class="white-text name">{{ currentClient.prenom }} {{ currentClient.nom }}</span></a>
-                        <a href="#!email"><span class="white-text email">{{ currentClient.user.email }}</span></a>
+                        <a href="mailto:{{ currentClient.user.email }}"><span class="white-text email">{{ currentClient.user.email }}</span></a>
                     </div>
                 </li>
                 <li><a class="subheader"><i class="material-icons">person</i>Clients</a></li>
@@ -54,25 +54,24 @@
                 <li><a href="{{path('fos_user_security_logout')}}" class="waves-effect"><i class="material-icons left">settings_power</i>Deconnexion</a></li>
             </ul>
         {% endblock %}
-
-        {% block javascripts %}
-            <!--Import jQuery before materialize.js-->
-            <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-            <script>
-                $(document).ready(function() {
-                   $('select').material_select();
-                });
-                /* Menu qui bouge */
-                $('.toto-collapse').sideNav({
-                  menuWidth: 300, // Default is 300
-                  edge: 'left', // Choose the horizontal origin
-                  closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
-                  draggable: false, // Choose whether you can drag to open on touch screens,
-                  onOpen: function(el) {  }, // A function to be called when sideNav is opened
-                  onClose: function(el) { }, // A function to be called when sideNav is closed
-                });
-            </script>
-        {% endblock %}
-    </body>  
+    </body> 
+    {% block javascripts %}
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        <script>
+            $(document).ready(function() {
+               $('select').material_select();
+            });
+            /* Menu qui bouge */
+            $('.toto-collapse').sideNav({
+              menuWidth: 300, // Default is 300
+              edge: 'left', // Choose the horizontal origin
+              closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+              draggable: false, // Choose whether you can drag to open on touch screens,
+              onOpen: function(el) {  }, // A function to be called when sideNav is opened
+              onClose: function(el) { }, // A function to be called when sideNav is closed
+            });
+        </script>
+    {% endblock %}
 </html>

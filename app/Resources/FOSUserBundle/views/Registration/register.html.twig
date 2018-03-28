@@ -25,7 +25,7 @@
 		{# %-- if error % #}
 		    <div>{# { error.messageKey|trans(error.messageData, 'security') } #}</div>
 		{# % endif % #}
-		
+
 		<div class="limiter">
 			<div class="container-login100">
 				<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
@@ -35,7 +35,7 @@
 							 <label for="email">{{ form_label(form.email) }}</label>
 						</span>
 						<div class="wrap-input100 validate-input m-b-36" data-validate = "Email is required">
-							<input type="text" id="email" name="_email" value="{{ form.vars.value.email }}" required="required" class="input100"/>
+							 {{ form_widget(form.email, { 'attr': { 'class': 'input100' } }) }}
 							<span class="focus-input100"></span>
 						</div>
 
@@ -43,7 +43,7 @@
 							 <label for="username">{{ form_label(form.username) }}</label>
 						</span>
 						<div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
-							<input type="text" id="usernam" name="_username" value="{{ form.vars.value.username }}" required="required" class="input100"/>
+							{{ form_widget(form.username, { 'attr': { 'class': 'input100' } }) }}
 							<span class="focus-input100"></span>
 						</div>
 
@@ -51,7 +51,7 @@
 							 <label for="plainpasswordfirst">{{ form_label(form.plainPassword.first) }}</label>
 						</span>
 						<div class="wrap-input100 validate-input m-b-36" data-validate = "Password is required">
-							<input type="password" id="plainpasswordfirst" name="_plainpasswordfirst" value="{{ form.vars.value.plainPassword }}" required="required" class="input100"/>
+							{{ form_widget(form.plainPassword.first, { 'attr': { 'class': 'input100' } }) }}
 							<span class="focus-input100"></span>
 						</div>
 
@@ -59,12 +59,13 @@
 							 <label for="plainpasswordsecond">{{ form_label(form.plainPassword.second) }}</label>
 						</span>
 						<div class="wrap-input100 validate-input m-b-36" data-validate = "Confirm password is required">
-							<input type="password" id="plainpasswordsecond" name="_plainpasswordsecond" value="{{ form.vars.value.plainPassword }}" required="required" class="input100"/>
+							{{ form_widget(form.plainPassword.second, { 'attr': { 'class': 'input100' } }) }}
 							<span class="focus-input100"></span>
 						</div>
 
-						{{ form_widget(form._token)}}
-
+						<div style="display: none">
+							{{ form_rest(form)}}
+						</div>
 					    <div class="container-login100-form-btn">
 					        <input class="login100-form-btn" type="submit" id="submit" name="_submit" value="{{ 'registration.submit'|trans }}" />
 					    </div>

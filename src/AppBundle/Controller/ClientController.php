@@ -7,21 +7,48 @@ use AppBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Form\ClientType;
 use AppBundle\Entity\Client;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class ClientController extends AbstractController
 {
     public function getClientsAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $clients = $em->getRepository('AppBundle:Client')->findAll();
+        $clients = null;
+
+        $form = $this->createFormBuilder(array())
+            ->add('data', TextType::class, array(
+                'required' => false
+            ))
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+             $data = $form->getData();
+             $clients = $em->createQueryBuilder()
+                ->select('c')
+                ->from('AppBundle:Client','c')
+                ->where('c.nom like :data')
+                ->orWhere('c.prenom like :data')
+                ->setParameter('data', "%".$data['data']."%")
+                ->getQuery()
+                ->getResult();
+        }
+        
+        if(empty($clients) && !$form->isValid()) {
+            $clients = $em->getRepository('AppBundle:Client')->findAll();
+        }
 
         $parameters = array();
         $parameters['title'] = 'Liste des clients';
         $parameters['clients'] = $clients;
         $parameters['currentClient'] = $this->getClient();
+        $parameters['form'] = $form->createView();
 
         return $this->render('AppBundle::client/client.html.twig', $parameters);
     }
+
 
     public function showClientsAction(Request $request, $id)
     {
@@ -65,5 +92,6 @@ class ClientController extends AbstractController
             'form' => $form->createView(),
             'currentClient' => $this->getClient()
         ));
-    }
+    } 
+       
 }

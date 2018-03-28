@@ -7,7 +7,13 @@
 		   	<!-- <li class="collection-header"> -->
 		   		<div>
 		   			<h5 class="left" style="padding: 10px ">La listes des clients </h5>
-		   			<h5 class="right" style="padding: 10px;"><i class="material-icons left">search</i> rechercher </h5>
+		   			<h5 class="right" style="padding: 10px;">
+		   				{{ form_start(form) }}
+		   					{{ form_row(form.data) }}
+		   					<div class="hide">{{ form_rest(form) }}</div>
+		   					<input type="submit" />
+		   				{{ form_end(form) }}
+		   				<i class="material-icons left">search</i> rechercher </h5>
 		   		<div>
 		   	<!-- </li>  -->
 		</ul>

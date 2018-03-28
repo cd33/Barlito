@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use FOS\UserBundle\Form\Type\RegistrationFormType;
 
 class SignUpType extends AbstractType
 {
@@ -24,4 +25,9 @@ class SignUpType extends AbstractType
 			'data_class' => Client::class
 		));
 	}
+	
+    public function getParent()
+    {
+        return 'fos_user_registration';
+    }
 }
