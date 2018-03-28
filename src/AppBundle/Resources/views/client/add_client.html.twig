@@ -1,38 +1,44 @@
 {% extends "AppBundle::layout.html.twig" %}
 
 {% block body %}
-	<div class="main">
-		{{ parent() }}
-	   	{# Creation de form avec start et end de definit #}
+	{{ parent() }}
+	<div class="main container">
 		{{ form_start(form) }}
-
-		<div class="row">
-		    <div class="input-field col s6">
-		      	{{ form_label(form.prenom) }}
-				{{ form_widget(form.prenom) }}
-				{{ form_errors(form.prenom) }}
-		    </div>
-	    </div>
-
-	    <div class="row">
-		    <div class="input-field col s6">
-				{{ form_label(form.nom) }}
-				{{ form_widget(form.nom) }}
-				{{ form_errors(form.nom) }}
+		<div class="col s12 m12 l6">
+			<div class="card-panel">
+				<h4 class="header2">Ajouter un client</h4>
+				<div class="row">
+					<form class="col s12">
+						<div class="row">
+							<div class="input-field col s12">
+								{{ form_label(form.prenom) }}
+								{{ form_widget(form.prenom) }}
+								{{ form_errors(form.prenom) }}
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								{{ form_label(form.nom) }}
+								{{ form_widget(form.nom) }}
+								{{ form_errors(form.nom) }}
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12">
+								{{ form_widget(form.user) }}
+							</div>
+						</div>
+						<div class="row">
+							<div style="float:right;">
+								{{ form_rest(form) }}
+							</div>
+						</div>
+						{{ form_rest(form) }}
+						{{ form_end(form) }}
+					</form>
+				</div>
 			</div>
 		</div>
-
-		<div class="row">
-			<div class="input-field col s6">
-				{{ form_widget(form.user) }}
-			</div>
-		</div>
-
-	<!-- 	<button class="btn waves-effect waves-light" type="submit" value="{# { form.vars.value.submit|trans } #}"> Submit
-	    	<i class="material-icons right">send</i>
-	 	</button> -->
-
-		{{ form_rest(form) }}
-		{{ form_end(form) }}
 	</div>
-{% endblock %} 
+
+{% endblock %}
