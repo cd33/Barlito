@@ -2,22 +2,25 @@
 
 {% block body %}
    	{{ parent() }}
-   	{# Creation de form avec start et end de definit #}
-	{{ form_start(form) }}
 
-	<div class="row">
-	    <div class="input-field col s6">
-	      	{{ form_label(form.libelle) }}
-			{{ form_widget(form.libelle) }}
-			{{ form_errors(form.libelle) }}
+	<div class="main">
+		
+		{# Creation de form avec start et end de definit #}
+		{{ form_start(form) }}
+		<div class="row">
+		    <div class="input-field col s6">
+		      	{{ form_label(form.libelle) }}
+				{{ form_widget(form.libelle) }}
+				{{ form_errors(form.libelle) }}
+		    </div>
 	    </div>
-    </div>
-    <div class="row">
-		<div class="input-field col s6">
-			{{ form_widget(form.client) }}
+	    <div class="row">
+			<div class="input-field col s6">
+				{{ form_widget(form.client) }}
+			</div>
 		</div>
-	</div>
 
-	{{ form_rest(form) }}
-	{{ form_end(form) }}
+		{{ form_rest(form) }}
+		{{ form_end(form) }}
+	</div>
 {% endblock %} 

@@ -2,16 +2,19 @@
 
 {% block body %}
    	{{ parent() }}
-    la listes des comptes : </br></br>
-    {% for compte in comptes %}
-    	{% if compte.client == null %}
-    		<a href="{{ path('compte_show', { 'id': compte.numero }) }}"> 
-    			- N°{{ compte.numero }} {{ compte.libelle }} apartient à Anonymous </br>
-    		</a>
-    	{% else %}
-        	<a href="{{ path('compte_show', { 'id': compte.numero }) }}"> 
-        		- N°{{ compte.numero }} {{ compte.libelle }} apartient à {{ compte.client }} </br>
-        	</a>
-    	{% endif %}
-    {% endfor %}
+    
+    <div class="main">
+        la listes des comptes : </br></br>
+        {% for compte in comptes %}
+        	{% if compte.client == null %}
+        		<a href="{{ path('compte_show', { 'id': compte.numero }) }}"> 
+        			- N°{{ compte.numero }} {{ compte.libelle }} apartient à Anonymous </br>
+        		</a>
+        	{% else %}
+            	<a href="{{ path('compte_show', { 'id': compte.numero }) }}"> 
+            		- N°{{ compte.numero }} {{ compte.libelle }} apartient à {{ compte.client }} </br>
+            	</a>
+        	{% endif %}
+        {% endfor %}
+    </div>
 {% endblock %}  

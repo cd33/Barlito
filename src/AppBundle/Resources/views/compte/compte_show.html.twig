@@ -2,9 +2,11 @@
 
 {% block body %}
 	{{ parent() }}
-	{% if compte.client == null %}
+	<div class="main">
+		{% if compte.client == null %}
     		N°{{ compte.numero }} {{ compte.libelle }} apartient à Anonymous </br>
     	{% else %}
         	N°{{ compte.numero }} {{ compte.libelle }} apartient à {{ compte.client }} </br>
     	{% endif %}
+    </div>
 {% endblock %} 

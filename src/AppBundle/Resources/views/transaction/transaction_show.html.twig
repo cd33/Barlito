@@ -2,5 +2,22 @@
 
 {% block body %}
 	{{ parent() }}
-	{{ transaction.libelle }} à la date du {{ transaction.dateof|date("d/m/Y") }} pour le montant de {{ (transaction.montant/100)|number_format(2, '.', ',') }}€
+	<div class="main">
+		<div style="margin:30px">
+			<ul class="collection with-header">
+			   	<li class="collection-header"><h6>transaction banquaire </h6></li>
+			    <li class="collection-item">
+			    	<div>
+				        <a href="#!" class="collection-item"> 
+				        	<div>
+				        		<div> {{ transaction.dateof|date("d/m/Y") }} </div>
+				        		<div style="float:right">{{ (transaction.montant/100)|number_format(2, '.', ',') }}€ </div>
+				        	</div>
+				        	<div>{{ transaction.libelle }} </div>
+				        </a>
+			    	</div>
+			    </li>
+			</ul>
+		</div>
+	</div>
 {% endblock %} 

@@ -2,31 +2,33 @@
 
 {% block body %}
 	{{ parent() }}
-	<div style="margin:30px">
-		<ul class="collection with-header">
-		   	<li class="collection-header"><h6>La listes des transactions banquaires </h6></li>
-		    <li class="collection-item">
-		    	<div>
-		    	{% set somme = 0 %}
-			    {% for transaction in transactions %}
-			        <a href="#!" class="collection-item"> 
-			        	<div>
-			        		<div> {{ transaction.dateof|date("d/m/Y") }} </div>
-			        		<div style="float:right">{{ (transaction.montant/100)|number_format(2, '.', ',') }}€ </div>
-			        	</div>
-			        	<div>{{ transaction.libelle }} </div>
-			        </a>
-			        {% set somme = somme+ transaction.montant/100 %}
-			    {% endfor %}
-			    	<a href="#!" class="collection-item"> 
-			        	<div style="margin-top: 20px; padding-bottom: 20px;">
-			        		<div> </div>
-			        		<div style="float:right;">{{ somme|number_format(2, '.', ',') }}€ </div>
-			        	</div>
-			        	<div style="float:right; margin-right:80px;margin-top: -20px;"> TOTAL </div>
-			        </a>
-		    	</div>
-		    </li>
-		</ul>
+	<div class="main">
+		<div style="margin:30px">
+			<ul class="collection with-header">
+			   	<li class="collection-header"><h6>La listes des transactions banquaires </h6></li>
+			    <li class="collection-item">
+			    	<div>
+			    	{% set somme = 0 %}
+				    {% for transaction in transactions %}
+				        <a href="#!" class="collection-item"> 
+				        	<div>
+				        		<div> {{ transaction.dateof|date("d/m/Y") }} </div>
+				        		<div style="float:right">{{ (transaction.montant/100)|number_format(2, '.', ',') }}€ </div>
+				        	</div>
+				        	<div>{{ transaction.libelle }} </div>
+				        </a>
+				        {% set somme = somme+ transaction.montant/100 %}
+				    {% endfor %}
+				    	<a href="#!" class="collection-item"> 
+				        	<div style="margin-top: 20px; padding-bottom: 20px;">
+				        		<div> </div>
+				        		<div style="float:right;">{{ somme|number_format(2, '.', ',') }}€ </div>
+				        	</div>
+				        	<div style="float:right; margin-right:80px;margin-top: -20px;"> TOTAL </div>
+				        </a>
+			    	</div>
+			    </li>
+			</ul>
+		</div>
 	</div>
 {% endblock %}  

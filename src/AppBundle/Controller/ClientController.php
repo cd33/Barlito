@@ -83,7 +83,7 @@ class ClientController extends AbstractController
             $em->flush();
 
             return $this->redirectToRoute('client_show', array(
-            'id' => $client->getClientId(),
+            'id' => $client->getclient_id(),
             'currentClient' => $this->getClient()
             ));
         }

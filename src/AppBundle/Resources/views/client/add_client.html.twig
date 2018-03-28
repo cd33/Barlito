@@ -1,36 +1,38 @@
 {% extends "AppBundle::layout.html.twig" %}
 
 {% block body %}
-	{{ parent() }}
-   	{# Creation de form avec start et end de definit #}
-	{{ form_start(form) }}
+	<div class="main">
+		{{ parent() }}
+	   	{# Creation de form avec start et end de definit #}
+		{{ form_start(form) }}
 
-	<div class="row">
-	    <div class="input-field col s6">
-	      	{{ form_label(form.prenom) }}
-			{{ form_widget(form.prenom) }}
-			{{ form_errors(form.prenom) }}
+		<div class="row">
+		    <div class="input-field col s6">
+		      	{{ form_label(form.prenom) }}
+				{{ form_widget(form.prenom) }}
+				{{ form_errors(form.prenom) }}
+		    </div>
 	    </div>
-    </div>
 
-    <div class="row">
-	    <div class="input-field col s6">
-			{{ form_label(form.nom) }}
-			{{ form_widget(form.nom) }}
-			{{ form_errors(form.nom) }}
+	    <div class="row">
+		    <div class="input-field col s6">
+				{{ form_label(form.nom) }}
+				{{ form_widget(form.nom) }}
+				{{ form_errors(form.nom) }}
+			</div>
 		</div>
-	</div>
 
-	<div class="row">
-		<div class="input-field col s6">
-			{{ form_widget(form.user) }}
+		<div class="row">
+			<div class="input-field col s6">
+				{{ form_widget(form.user) }}
+			</div>
 		</div>
+
+	<!-- 	<button class="btn waves-effect waves-light" type="submit" value="{# { form.vars.value.submit|trans } #}"> Submit
+	    	<i class="material-icons right">send</i>
+	 	</button> -->
+
+		{{ form_rest(form) }}
+		{{ form_end(form) }}
 	</div>
-
-<!-- 	<button class="btn waves-effect waves-light" type="submit" value="{# { form.vars.value.submit|trans } #}"> Submit
-    	<i class="material-icons right">send</i>
- 	</button> -->
-
-	{{ form_rest(form) }}
-	{{ form_end(form) }}
 {% endblock %} 

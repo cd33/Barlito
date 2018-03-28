@@ -6,14 +6,15 @@
 	   	<ul class="collection with-header">
 		   	<!-- <li class="collection-header"> -->
 		   		<div>
-S		   			<h5 class="left" style="padding: 10px ">Listes des clients</h5>
+		   			<h5 class="left" style="padding: 10px ">Listes des clients</h5>
 		   			<h5 class="right" style="padding: 10px;">
 		   				{{ form_start(form) }}
-		   					{{ form_row(form.data) }}
+		   					<div class="row"> 
+		   						{{ form_widget(form.data) }} 
+		   						<input class="btn" type="submit" value="recherhcher" /> 
+		   					</div>
 		   					<div class="hide">{{ form_rest(form) }}</div>
-		   					<input type="submit" />
 		   				{{ form_end(form) }}
-		   				<i class="material-icons left">search</i> rechercher 
 		   			</h5>
 		   		<div>
 		   	<!-- </li>  -->
