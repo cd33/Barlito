@@ -2,6 +2,7 @@
 
 {% block body %}
   {{ parent() }}
+    <div class="main">
   <div class="row">
       <div class="col s4 m4">
         <div class="card">
@@ -14,7 +15,7 @@
           </div>
           <a href='{{path('clients')}}'>
               <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                <p>Consultez la liste de l'ensemble de vos clients.</p>
               </div>
           </a>
         </div>
@@ -31,7 +32,7 @@
           </div>
           <a href='{{path('comptes')}}'>
               <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                <p>Consultez la liste de l'ensemble des comptes de vos clients.</p>
               </div>
           </a>
         </div>
@@ -48,12 +49,12 @@
           </div>
           <a href='{{path('transactions')}}'>
               <div class="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                <p>Consultez la liste de l'ensemble des transactions de vos clients.</p>
               </div>
           </a>
         </div>
       </div>
-  </div>
+  </div></div>
 {% endblock %} 
 
 {% block javascripts %}
