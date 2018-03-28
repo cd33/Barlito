@@ -93,4 +93,8 @@ class Compte
     {
         return $this->client;
     }
+
+    public function __toString(){
+        return $this->getNumero()." ".$this->getLibelle();
+    }
 }

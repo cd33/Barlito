@@ -10,4 +10,9 @@ namespace AppBundle\Repository;
  */
 class TransactionRepository extends \Doctrine\ORM\EntityRepository
 {
+
+	public function findAll()
+    {
+        return $this->findBy(array(), array('dateof' => 'ASC'));
+    }
 }

@@ -52,18 +52,19 @@ class CompteController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()) {
             $compte = $form->getData();
-            $compte['currentClient'] = $this->getClient();
 
             $em->persist($compte);
             $em->flush();
 
             return $this->redirectToRoute('compte_show', array(
-            'id' => $compte->getNumero()
+            'id' => $compte->getNumero(),
+            'currentClient' => $this->getClient()
             ));
         }
 
         return $this->render('AppBundle::compte/add_compte.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'currentClient' => $this->getClient()
         ));
     }
 }

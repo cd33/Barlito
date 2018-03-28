@@ -1,5 +1,26 @@
 {% extends "AppBundle::layout.html.twig" %}
 
 {% block body %}
-	{{ client.prenom }} {{ client.nom }}
+	{{ parent() }}
+	<div class="row" style="margin:30px">
+		<div class="col s3 m3"></div>
+	    <div class="col s6 m6">
+<!-- 		    <h2 class="header">Horizontal Card</h2> -->
+		    <div class="card horizontal">
+		      	<div class="card-image">
+		        	<img src="https://www.timeshighereducation.com/sites/default/files/byline_photos/default-avatar.png" style="width: 300px; height: 300px;">
+		      	</div>
+		      	<div class="card-stacked">
+			        <div class="card-content">
+			            <h4> {{ client.nom }} {{ client.prenom }} </h4> </br></br> 
+			            <p> I am a very simple card. I am good at containing small bits of information.</p>
+			        </div>
+			        <div class="card-action">
+			            <a href="mailto:{{ client.user.email }}"> {{ client.user.email }} </a>
+			        </div>
+		      	</div>
+		    </div>
+		</div>
+	    <div class="col s3 m3"></div>
+	</div>
 {% endblock %} 

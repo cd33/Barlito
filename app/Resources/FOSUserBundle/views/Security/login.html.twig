@@ -67,11 +67,12 @@
 						</div>
 
 						<div class="container-login100-form-btn">
-							<input class="login100-form-btn" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+							<input class="login100-form-btn" type="submit" id="submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
 						</div>
+
 						<div class="container-login100-form-btn">
-							<a href='{{path('fos_user_registration_register')}}'> 
-								<input class="login100-form-btn"  id="register" name="register" value="Sign up" />
+							<a href='{{path('fos_user_registration_register')}}'>
+								<input class="login100-form-btn" type="button"  id="register" name="_register" value="Sign up" />
 							</a>
 						</div>
 

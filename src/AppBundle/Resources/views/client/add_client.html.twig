@@ -1,6 +1,7 @@
 {% extends "AppBundle::layout.html.twig" %}
 
 {% block body %}
+	{{ parent() }}
    	{# Creation de form avec start et end de definit #}
 	{{ form_start(form) }}
 
@@ -26,7 +27,9 @@
 		</div>
 	</div>
 
-
+<!-- 	<button class="btn waves-effect waves-light" type="submit" value="{# { form.vars.value.submit|trans } #}"> Submit
+    	<i class="material-icons right">send</i>
+ 	</button> -->
 
 	{{ form_rest(form) }}
 	{{ form_end(form) }}

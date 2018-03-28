@@ -1,58 +1,59 @@
 {% extends "AppBundle::layout.html.twig" %}
 
 {% block body %}
-<div class="row">
-    <div class="col s4 m4">
-      <div class="card">
-        <div class="card-image">
+  {{ parent() }}
+  <div class="row">
+      <div class="col s4 m4">
+        <div class="card">
+          <div class="card-image">
+            <a href='{{path('clients')}}'>
+              <img src="http://www.expertise-comptable.com/wp-content/uploads/2016/03/recruitment-consultants-more-clients.jpg">
+              <span class="card-title">Liste des clients</span>
+            </a>
+            <a href='{{path('client_add')}}' class="btn-floating btn-large halfway-fab waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ajouter un client"><i class="material-icons">add</i></a>
+          </div>
           <a href='{{path('clients')}}'>
-            <img src="http://materializecss.com/images/sample-1.jpg">
-            <span class="card-title">Liste des clients</span>
+              <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+              </div>
           </a>
-          <a href='{{path('client_add')}}' class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ajouter un client"><i class="material-icons">add</i></a>
         </div>
-        <a href='{{path('clients')}}'>
-            <div class="card-content">
-              <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-            </div>
-        </a>
       </div>
-    </div>
 
-    <div class="col s4 m4">
-      <div class="card">
-        <div class="card-image">
+      <div class="col s4 m4">
+        <div class="card">
+          <div class="card-image">
+            <a href='{{path('comptes')}}'>
+              <img src="http://creer-une-sas.net/wp-content/uploads/2016/05/comptes-annuels-SAS-1.jpg">
+              <span class="card-title">Liste des comptes</span>
+            </a>
+            <a href='{{path('compte_add')}}' class="btn-floating btn-large halfway-fab waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ajouter un compte"><i class="material-icons">add</i></a>
+          </div>
           <a href='{{path('comptes')}}'>
-            <img src="http://materializecss.com/images/sample-1.jpg">
-            <span class="card-title">Liste des comptes</span>
+              <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+              </div>
           </a>
-          <a href='{{path('compte_add')}}' class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ajouter un compte"><i class="material-icons">add</i></a>
         </div>
-        <a href='{{path('comptes')}}'>
-            <div class="card-content">
-              <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-            </div>
-        </a>
       </div>
-    </div>
 
-    <div class="col s4 m4">
-      <div class="card">
-        <div class="card-image">
+      <div class="col s4 m4">
+        <div class="card">
+          <div class="card-image">
+            <a href='{{path('transactions')}}'>
+              <img src="http://www.livemint.com/rf/Image-621x414/LiveMint/Period2/2016/12/20/Photos/Processed/Securitytipsnew-kTII--621x414@LiveMint.jpg">
+              <span class="card-title">Liste des transactions</span>
+            </a>
+            <a href='{{path('transaction_add')}}' class="btn-floating  btn-large halfway-fab waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ajouter une transaction"><i class="material-icons">add</i></a>
+          </div>
           <a href='{{path('transactions')}}'>
-            <img src="http://materializecss.com/images/sample-1.jpg">
-            <span class="card-title">Liste des transactions</span>
+              <div class="card-content">
+                <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+              </div>
           </a>
-          <a href='{{path('transaction_add')}}' class="btn-floating halfway-fab waves-effect waves-light red tooltipped" data-position="bottom" data-delay="50" data-tooltip="Ajouter une transaction"><i class="material-icons">add</i></a>
         </div>
-        <a href='{{path('transactions')}}'>
-            <div class="card-content">
-              <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-            </div>
-        </a>
       </div>
-    </div>
-</div>
+  </div>
 {% endblock %} 
 
 {% block javascripts %}

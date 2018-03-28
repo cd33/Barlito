@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block navbar %}
-	<div style="margin-:20px;">
+	<div style="margin:20px;">
         <nav>
           <div class="navbarcustom" style="padding-left:100px">
             <a href="#!" class="brand-logo">Ma Banque En Ligne </a>
@@ -20,49 +20,59 @@
 
 {% block body %}
 	{% block fos_user_content %}
+
 		{% trans_default_domain 'FOSUserBundle' %}
+		{# %-- if error % #}
+		    <div>{# { error.messageKey|trans(error.messageData, 'security') } #}</div>
+		{# % endif % #}
 		
-		{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+		<div class="limiter">
+			<div class="container-login100">
+				<div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
+					<form action="{{ path("fos_user_security_check") }}" method="post" class="login100-form validate-form flex-sb flex-w">
 
-			<div class="row">
-			    <div class="input-field col s6">
-			      	{{ form_label(form.email) }}
-					{{ form_widget(form.email) }}
-					{{ form_errors(form.email) }}
-			    </div>
-		    </div>
+						<span class="txt1 p-b-11">
+							 <label for="email">{{ form_label(form.email) }}</label>
+						</span>
+						<div class="wrap-input100 validate-input m-b-36" data-validate = "Email is required">
+							<input type="text" id="email" name="_email" value="{{ form.vars.value.email }}" required="required" class="input100"/>
+							<span class="focus-input100"></span>
+						</div>
 
-		    <div class="row">
-			    <div class="input-field col s6">
-					{{ form_label(form.username) }}
-					{{ form_widget(form.username) }}
-					{{ form_errors(form.username) }}
+						<span class="txt1 p-b-11">
+							 <label for="username">{{ form_label(form.username) }}</label>
+						</span>
+						<div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
+							<input type="text" id="usernam" name="_username" value="{{ form.vars.value.username }}" required="required" class="input100"/>
+							<span class="focus-input100"></span>
+						</div>
+
+						<span class="txt1 p-b-11">
+							 <label for="plainpasswordfirst">{{ form_label(form.plainPassword.first) }}</label>
+						</span>
+						<div class="wrap-input100 validate-input m-b-36" data-validate = "Password is required">
+							<input type="password" id="plainpasswordfirst" name="_plainpasswordfirst" value="{{ form.vars.value.plainPassword }}" required="required" class="input100"/>
+							<span class="focus-input100"></span>
+						</div>
+
+						<span class="txt1 p-b-11">
+							 <label for="plainpasswordsecond">{{ form_label(form.plainPassword.second) }}</label>
+						</span>
+						<div class="wrap-input100 validate-input m-b-36" data-validate = "Confirm password is required">
+							<input type="password" id="plainpasswordsecond" name="_plainpasswordsecond" value="{{ form.vars.value.plainPassword }}" required="required" class="input100"/>
+							<span class="focus-input100"></span>
+						</div>
+
+						{{ form_widget(form._token)}}
+
+					    <div class="container-login100-form-btn">
+					        <input class="login100-form-btn" type="submit" id="submit" name="_submit" value="{{ 'registration.submit'|trans }}" />
+					    </div>
+					</form>
 				</div>
-			<div>
-
-			<div class="row">
-			    <div class="input-field col s6">
-			      	{{ form_label(form.plainPassword.first) }}
-					{{ form_widget(form.plainPassword.first) }}
-					{{ form_errors(form.plainPassword.first) }}
-			    </div>
-		    </div>
-
-		    <div class="row">
-			    <div class="input-field col s6">
-					{{ form_label(form.plainPassword.second) }}
-					{{ form_widget(form.plainPassword.second) }}
-					{{ form_errors(form.plainPassword.second) }}
-				</div>
-			<div>
-
-		    <div>
-		        <input type="submit" value="{{ 'registration.submit'|trans }}" />
-		    </div>
-
-		{{ form_rest(form) }}
-		{{ form_end(form) }}
-
+			</div>
+		</div>
+		<div id="dropDownSelect1"></div>
 	{% endblock fos_user_content %}
 {% endblock %}
 

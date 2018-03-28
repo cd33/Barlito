@@ -1,8 +1,17 @@
 {% extends "AppBundle::layout.html.twig" %}
 
 {% block body %}
-   	la listes des comptes : </br></br>
+   	{{ parent() }}
+    la listes des comptes : </br></br>
     {% for compte in comptes %}
-        - N°{{ compte.numero }} {{ compte.libelle }} </br>
+    	{% if compte.client == null %}
+    		<a href="{{ path('compte_show', { 'id': compte.numero }) }}"> 
+    			- N°{{ compte.numero }} {{ compte.libelle }} apartient à Anonymous </br>
+    		</a>
+    	{% else %}
+        	<a href="{{ path('compte_show', { 'id': compte.numero }) }}"> 
+        		- N°{{ compte.numero }} {{ compte.libelle }} apartient à {{ compte.client }} </br>
+        	</a>
+    	{% endif %}
     {% endfor %}
 {% endblock %}  

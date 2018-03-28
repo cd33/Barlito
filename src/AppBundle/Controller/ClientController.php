@@ -10,12 +10,8 @@ use AppBundle\Entity\Client;
 
 class ClientController extends AbstractController
 {
-
     public function getClientsAction(Request $request)
     {
-        
-
-
         $em = $this->getDoctrine()->getManager();
         $clients = $em->getRepository('AppBundle:Client')->findAll();
 
@@ -23,6 +19,7 @@ class ClientController extends AbstractController
         $parameters['title'] = 'Liste des clients';
         $parameters['clients'] = $clients;
         $parameters['currentClient'] = $this->getClient();
+
         return $this->render('AppBundle::client/client.html.twig', $parameters);
     }
 
@@ -54,18 +51,19 @@ class ClientController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()) {
             $client = $form->getData();
-            $client['currentClient'] = $this->getClient();
 
             $em->persist($client);
             $em->flush();
 
             return $this->redirectToRoute('client_show', array(
-            'id' => $client->getClientId()
+            'id' => $client->getClientId(),
+            'currentClient' => $this->getClient()
             ));
         }
-
+        
         return $this->render('AppBundle::client/add_client.html.twig', array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'currentClient' => $this->getClient()
         ));
     }
 }

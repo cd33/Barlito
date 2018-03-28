@@ -373,7 +373,7 @@ iframe {
 /*------------------------------------------------------------------
 [ Button ]*/
 .container-login100-form-btn {
-  width: 100%;
+  /*width: 100%;*/
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;

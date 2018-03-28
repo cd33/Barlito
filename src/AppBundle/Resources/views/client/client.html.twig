@@ -1,8 +1,39 @@
 {% extends "AppBundle::layout.html.twig" %}
 
 {% block body %}
-   	la listes des clients : </br></br>
-    {% for client in clients %}
-        - {{ client.nom }} {{ client.prenom }} </br>
-    {% endfor %}
+   	{{ parent() }}
+   	<div style="margin:30px">
+	   	<ul class="collection with-header">
+		   	<!-- <li class="collection-header"> -->
+		   		<div>
+		   			<h5 class="left" style="padding: 10px ">La listes des clients </h5>
+		   			<h5 class="right" style="padding: 10px;"><i class="material-icons left">search</i> rechercher </h5>
+		   		<div>
+		   	<!-- </li>  -->
+		</ul>
+	   	<div class="row">
+		    {% for client in clients %}
+			    <div class="col s4 m4">
+		           	<div class="card">
+					    <div class="card-image waves-effect waves-block waves-light">
+					      <img class="activator" src="https://www.timeshighereducation.com/sites/default/files/byline_photos/default-avatar.png" style="width: 100px; height: 100px;">
+					    </div>
+					    <div class="card-content">
+					      	<span class="card-title activator grey-text text-darken-4">{{ client.nom }} {{ client.prenom }}
+					      		<a href="{{ path('client_show', { 'id': client.client_id }) }}">
+					      			<i class="material-icons right">more_vert</i>
+					      		</a>
+					      	</span>
+					      <p><a href="#">{{ client.user.email }}</a></p>
+					    </div>
+					    <div class="card-reveal">
+					      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+					      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+					    </div>
+					</div>
+			    </div>
+		    {% endfor %}
+		</div>
+	</div>
 {% endblock %}  
+

@@ -16,10 +16,10 @@
             <div style="margin:20px;">
                 <nav>
                   <div class="nav-wrapper teal lighten-2 navbarcustom" style="padding-left:100px">
-                    <a href="#!" class="brand-logo">Ma Banque En Ligne </a>
+                    <a href="{{path('apaep')}}" class="brand-logo"><i class="material-icons left">account_balance</i> Ma Banque En Ligne </a>
                     <ul class="right hide-on-med-and-down">
-                        <li><a href="#"> Bonjour {{ currentClient.prenom }} {{ currentClient.nom }} !</a></li>
-                        <li><a href='{{path('fos_user_security_logout')}}'><i class="material-icons left">person</i> Deconnexion </a></li>
+                        <li><a href="#" data-activates="slide-out" class="toto-collapse"><i class="material-icons left">person</i> Bonjour {{ currentClient.prenom }} {{ currentClient.nom }} !</a></li>
+                        <li><a href='{{path('fos_user_security_logout')}}'><i class="material-icons right">settings_power</i> Deconnexion </a></li>
                     </ul>
                   </div>
                 </nav>
@@ -27,6 +27,32 @@
         {% endblock %}
 
         {% block body %}
+            <!-- Menu gauche user  -->
+            <ul id="slide-out" class="side-nav" style="transform: translateX(-100%);">
+                <li>
+                    <div class="user-view">
+                        <div class="background">
+                            <img src="http://materializecss.com/images/office.jpg">
+                        </div>
+                        <a href="#!user"><img class="circle" src="https://www.timeshighereducation.com/sites/default/files/byline_photos/default-avatar.png"></a>
+                        <a href="#!name"><span class="white-text name">{{ currentClient.prenom }} {{ currentClient.nom }}</span></a>
+                        <a href="#!email"><span class="white-text email">{{ currentClient.user.email }}</span></a>
+                    </div>
+                </li>
+                <li><a class="subheader"><i class="material-icons">person</i>Clients</a></li>
+                <li><a href="{{path('clients')}}" class="waves-effect">Consulter un Client</a></li>
+                <li><a href="{{path('client_add')}}" class="waves-effect">Ajouter un Client</a></li>
+                <li><div class="divider"></div></li>
+                <li><a class="subheader"><i class="material-icons">euro_symbol</i>Comptes</a></li>
+                <li><a href="{{path('comptes')}}" class="waves-effect">Consulter un Compte</a></li>
+                <li><a href="{{path('compte_add')}}" class="waves-effect">Ajouter un Compte</a></li>
+                <li><div class="divider"></div></li>
+                <li><a class="subheader"><i class="material-icons">swap_horiz</i>Transactions</a></li>
+                <li><a href="{{path('transactions')}}" class="waves-effect">Consulter une Transaction</a></li>
+                <li><a href="{{path('transaction_add')}}" class="waves-effect">Faire une Transaction</a></li>
+                <li><div class="divider"></div></li>
+                <li><a href="{{path('fos_user_security_logout')}}" class="waves-effect"><i class="material-icons left">settings_power</i>Deconnexion</a></li>
+            </ul>
         {% endblock %}
 
         {% block javascripts %}
@@ -37,9 +63,16 @@
                 $(document).ready(function() {
                    $('select').material_select();
                 });
+                /* Menu qui bouge */
+                $('.toto-collapse').sideNav({
+                  menuWidth: 300, // Default is 300
+                  edge: 'left', // Choose the horizontal origin
+                  closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
+                  draggable: false, // Choose whether you can drag to open on touch screens,
+                  onOpen: function(el) {  }, // A function to be called when sideNav is opened
+                  onClose: function(el) { }, // A function to be called when sideNav is closed
+                });
             </script>
         {% endblock %}
-    </body>
-
-   
+    </body>  
 </html>
