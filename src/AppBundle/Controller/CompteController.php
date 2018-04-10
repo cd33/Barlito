@@ -14,10 +14,12 @@ class CompteController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $comptes = $em->getRepository('AppBundle:Compte')->findAll();
+        $clients = $em->getRepository('AppBundle:Client')->findAll();
 
         $parameters = array();
         $parameters['title'] = 'Liste des comptes';
         $parameters['comptes'] = $comptes;
+        $parameters['clients'] = $clients;
         $parameters['currentClient'] = $this->getClient();
         return $this->render('AppBundle::compte/compte.html.twig', $parameters);
     }

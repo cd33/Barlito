@@ -3,18 +3,35 @@
 {% block body %}
    	{{ parent() }}
     
-    <div class="main">
-        la listes des comptes : </br></br>
-        {% for compte in comptes %}
-        	{% if compte.client == null %}
-        		<a href="{{ path('compte_show', { 'id': compte.numero }) }}"> 
-        			- N°{{ compte.numero }} {{ compte.libelle }} apartient à Anonymous </br>
-        		</a>
-        	{% else %}
-            	<a href="{{ path('compte_show', { 'id': compte.numero }) }}"> 
-            		- N°{{ compte.numero }} {{ compte.libelle }} apartient à {{ compte.client }} </br>
-            	</a>
-        	{% endif %}
+    <div class="main" style="margin:30px">
+        <ul class="collection with-header">
+            <div>
+                <h5 class="left" style="padding: 10px ">la listes des comptes</h5>
+            <div>
+        </ul>
+
+        {% for client in clients %}
+            <div class="row">
+                <div class="col s12 m6">
+                  <div class="card grey" style="border-radius: 10px;">
+                    <div class="card-content white-text">
+                        <span class="card-title"> <b> {{ client.nom }} {{ client.prenom }} </b></br> </span>
+                        <p>
+                            {% for compte in comptes %}
+                                {% if client == compte.client %}
+                                    <a style="color:#fff" href="{{ path('compte_show', { 'id': compte.numero }) }}"> 
+                                        N°{{ compte.numero }} {{ compte.libelle }}</br>
+                                    </a>
+                                {% endif %}
+                            {% endfor %} 
+                            {% if client.compte|length == 0 %}
+                                Pas de compte !
+                            {% endif %} </br>
+                        </p>
+                    </div>
+                  </div>
+                </div>
+            </div>
         {% endfor %}
     </div>
 {% endblock %}  

@@ -2,11 +2,25 @@
 
 {% block body %}
 	{{ parent() }}
-	<div class="main">
-		{% if compte.client == null %}
-    		N°{{ compte.numero }} {{ compte.libelle }} apartient à Anonymous </br>
-    	{% else %}
-        	N°{{ compte.numero }} {{ compte.libelle }} apartient à {{ compte.client }} </br>
-    	{% endif %}
+	
+	<div class="main" style="margin:30px">
+        <div class="row">
+            <div class="col s12 m6">
+              <div class="card grey" style="border-radius: 10px; ">
+                <div class="card-content white-text">
+                    <span class="card-title"> <b> {{ currentClient.nom }} {{ currentClient.prenom }} </b></br> </span>
+                    <p>
+                        {% if currentClient.compte|length == 0 %}
+                            Pas de compte !
+                        {% else %}    
+                    		N°{{ compte.numero }} {{ compte.libelle }}</br>
+                        {% endif %} </br>
+                        <div style="float:right; margin-top:-80px; font-size:1.8em"> 3005.87€ </div>
+                    </p>
+                </div>
+              </div>
+            </div>
+        </div>
     </div>
+
 {% endblock %} 
