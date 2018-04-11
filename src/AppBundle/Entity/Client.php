@@ -177,4 +177,14 @@ class Client
     public function __toString(){
         return $this->getPrenom()." ".$this->getNom();
     }
+
+    /**
+     * Get clientId
+     *
+     * @return integer
+     */
+    public function getClientId()
+    {
+        return $this->client_id;
+    }
 }

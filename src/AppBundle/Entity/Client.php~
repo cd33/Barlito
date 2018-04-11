@@ -40,7 +40,7 @@ class Client
     * @var User
     *
     *   @ORM\OneToOne(targetEntity="User")
-    *  @ORM\JoinColumn(name="user_id",referencedColumnName="id")
+    *   @ORM\JoinColumn(name="user_id",referencedColumnName="id")
     */
     protected $user;
 
@@ -56,7 +56,7 @@ class Client
      *
      * @return integer
      */
-    public function getClientId()
+    public function getclient_id()
     {
         return $this->client_id;
     }
@@ -172,5 +172,9 @@ class Client
     public function getCompte()
     {
         return $this->compte;
+    }
+
+    public function __toString(){
+        return $this->getPrenom()." ".$this->getNom();
     }
 }

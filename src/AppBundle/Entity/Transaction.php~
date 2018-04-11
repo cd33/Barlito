@@ -43,6 +43,14 @@ class Transaction
      */
     protected $montant;
 
+    /**
+    * @var User
+    *
+    * @ORM\ManyToOne(targetEntity="Compte", inversedBy="transaction")
+    * @ORM\JoinColumn(name="numero",referencedColumnName="numero")
+    */
+    protected $client;
+
 
     /**
      * Get transacId

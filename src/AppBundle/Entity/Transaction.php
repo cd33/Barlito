@@ -43,6 +43,22 @@ class Transaction
      */
     protected $montant;
 
+    /**
+    * @var User
+    *
+    * @ORM\ManyToOne(targetEntity="Compte", inversedBy="transaction")
+    * @ORM\JoinColumn(name="numero",referencedColumnName="numero")
+    */
+    protected $compte;
+
+    /**
+    * @var User
+    *
+    * @ORM\ManyToOne(targetEntity="Compte", inversedBy="transaction")
+    * @ORM\JoinColumn(name="numero",referencedColumnName="numero")
+    */
+    protected $compte2;
+
 
     /**
      * Get transacId
@@ -124,5 +140,53 @@ class Transaction
     public function getMontant()
     {
         return $this->montant;
+    }
+
+    /**
+     * Set compte
+     *
+     * @param \AppBundle\Entity\Compte $compte
+     *
+     * @return Transaction
+     */
+    public function setcompte(\AppBundle\Entity\Compte $compte = null)
+    {
+        $this->compte = $compte;
+
+        return $this;
+    }
+
+    /**
+     * Get compte
+     *
+     * @return \AppBundle\Entity\Compte
+     */
+    public function getcompte()
+    {
+        return $this->compte;
+    }
+
+    /**
+     * Set compte2
+     *
+     * @param \AppBundle\Entity\Compte $compte2
+     *
+     * @return Transaction
+     */
+    public function setcompte2(\AppBundle\Entity\Compte $compte2 = null)
+    {
+        $this->compte2 = $compte2;
+
+        return $this;
+    }
+
+    /**
+     * Get compte2
+     *
+     * @return \AppBundle\Entity\Compte
+     */
+    public function getcompte2()
+    {
+        return $this->compte2;
     }
 }

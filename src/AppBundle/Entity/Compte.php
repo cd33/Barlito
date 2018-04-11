@@ -37,6 +37,13 @@ class Compte
     protected $client;
 
     /**
+    * @var User
+    *
+    * @ORM\OneToMany(targetEntity="Transaction", mappedBy="compte", cascade={"persist", "remove"})
+    */
+    protected $transaction;
+
+    /**
      * Get numero
      *
      * @return integer
@@ -96,5 +103,46 @@ class Compte
 
     public function __toString(){
         return $this->getNumero()." ".$this->getLibelle();
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->transaction = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add transaction
+     *
+     * @param \AppBundle\Entity\Transaction $transaction
+     *
+     * @return Compte
+     */
+    public function addTransaction(\AppBundle\Entity\Transaction $transaction)
+    {
+        $this->transaction[] = $transaction;
+
+        return $this;
+    }
+
+    /**
+     * Remove transaction
+     *
+     * @param \AppBundle\Entity\Transaction $transaction
+     */
+    public function removeTransaction(\AppBundle\Entity\Transaction $transaction)
+    {
+        $this->transaction->removeElement($transaction);
+    }
+
+    /**
+     * Get transaction
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTransaction()
+    {
+        return $this->transaction;
     }
 }
